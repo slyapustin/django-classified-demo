@@ -24,4 +24,4 @@
 
 ## Customisation
 
-Use username `admin` and `password` admin to access [http://localhost:8000/admin/](Classified Admin Section).
+Use username `admin` and `password` admin to access [Classified Admin Section](http://localhost:8000/admin/).
