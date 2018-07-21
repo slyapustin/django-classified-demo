@@ -6,6 +6,6 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'postgres'
+        'HOST': 'db'
     }
 }

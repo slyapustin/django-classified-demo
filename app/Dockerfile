@@ -4,6 +4,10 @@ RUN mkdir /app
 WORKDIR /app
 ADD requirements.txt /app/
 RUN pip install -r requirements.txt
-# We use Postgres
+
 RUN pip install psycopg2-binary
+RUN pip install gunicorn
+
 ADD . /app/
+
+RUN python ./manage.py collectstatic --noinput
