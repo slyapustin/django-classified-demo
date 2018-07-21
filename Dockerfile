@@ -4,8 +4,8 @@ RUN mkdir /app
 WORKDIR /app
 ADD requirements.txt /app/
 RUN pip install -r requirements.txt
+# We use Postgres
+RUN pip install psycopg2-binary
 ADD . /app/
-RUN python3 ./manage.py migrate
-RUN python3 ./manage.py populate_demo_data
-
-CMD python3 ./manage.py runserver 0.0.0.0:8000
+RUN python ./manage.py migrate
+RUN python ./manage.py populate_demo_data
