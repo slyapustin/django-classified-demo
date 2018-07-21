@@ -24,10 +24,6 @@
     "Description": "Jobs"
   },
   {
-    "Type": "P",
-    "Description": "Personals"
-  },
-  {
     "Type": "R",
     "Description": "Resumes"
   },
