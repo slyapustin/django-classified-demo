@@ -1,0 +1,38 @@
+[
+  {
+    "Type": "B",
+    "Description": "Services"
+  },
+  {
+    "Type": "C",
+    "Description": "Community"
+  },
+  {
+    "Type": "E",
+    "Description": "Events"
+  },
+  {
+    "Type": "G",
+    "Description": "Gigs"
+  },
+  {
+    "Type": "H",
+    "Description": "Housing"
+  },
+  {
+    "Type": "J",
+    "Description": "Jobs"
+  },
+  {
+    "Type": "P",
+    "Description": "Personals"
+  },
+  {
+    "Type": "R",
+    "Description": "Resumes"
+  },
+  {
+    "Type": "S",
+    "Description": "For Sale / Wanted"
+  }
+]

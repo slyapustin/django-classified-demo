@@ -1,5 +1,10 @@
+import json
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
+from django.db import IntegrityError
+from django_classified.models import Area, Section, Group
 
 
 class Command(BaseCommand):
@@ -8,20 +13,58 @@ class Command(BaseCommand):
     def create_admin(self):
         username = 'admin'
         password = 'admin'
+        email = 'admin@example.com'
 
-        User.objects.create_user(
-            username=username,
-            password=password,
-            is_superuser=True,
-            is_staff=True
-        )
+        try:
+            User.objects.create_superuser(
+                username=username,
+                password=password,
+                email=email
+            )
+        except IntegrityError:
+            self.stdout.write('Admin user already created')
+            return
 
         self.stdout.write(
-            'Super user was created successfully. '
-            'Please use username: {} and password: {} to access /admin/'.format(
+            'Superuser {}/{} was created successfully.'.format(
                 username,
                 password
             ))
 
+    def populate_craigslist_data(self):
+        # Clone structure of Craigslist
+        self.stdout.write('Loading Sections')
+        sections = json.load(open('demo/craigslist_data/Types.json'))
+        sections_dict = dict()
+        for section in sections:
+            obj, _ = Section.objects.get_or_create(
+                title=section['Description']
+            )
+            # To speed up access later
+            sections_dict[section['Type']] = obj
+
+        self.stdout.write('Loading Groups')
+        categories = json.load(open('demo/craigslist_data/Categories.json'))
+        for category in categories:
+            Group.objects.get_or_create(
+                slug=category['Abbreviation'],
+                defaults=dict(
+                    section=sections_dict[category['Type']],
+                    title=category['Description']
+                )
+            )
+
+        self.stdout.write('Loading Areas')
+        areas = json.load(open('demo/craigslist_data/Areas.json'))
+        for area in areas:
+            if area.get('Country') == settings.CRAIGSLIST_COUNTRY:
+                Area.objects.get_or_create(
+                    slug=area.get('Abbreviation'),
+                    defaults=dict(
+                        title=area.get('ShortDescription')
+                    )
+                )
+
     def handle(self, *args, **options):
         self.create_admin()
+        self.populate_craigslist_data()

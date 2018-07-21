@@ -24,4 +24,7 @@
 
 ## Customisation
 
-Use username `admin` and `password` admin to access [Classified Admin Section](http://localhost:8000/admin/).
+ - Note: `populate_demo_data` management command will load initial data to populate app
+    Sections, Groups and Areas based on [craigslist.org](http://craigslist.org) website structure.
+
+ - Use username `admin` and `password` admin to access [Django Classified Admin](http://localhost:8000/admin/).
