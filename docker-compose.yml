@@ -10,8 +10,13 @@ services:
       - DJANGO_SETTINGS_MODULE=project.settings_docker
     depends_on:
       - postgres
-    command: bash -c "python ./manage.py migrate
+    command: bash -c "sleep 3 && python ./manage.py migrate
       && python ./manage.py runserver 0.0.0.0:8000"
 
   postgres:
     image: "postgres:10"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+     pgdata:
