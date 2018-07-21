@@ -1,6 +1,6 @@
 version: '2'
 services:
-  app:
+  web:
     build: .
     ports:
       - 8000:8000
@@ -8,15 +8,18 @@ services:
       - .:/app/
     environment:
       - DJANGO_SETTINGS_MODULE=project.settings_docker
+    volumes:
+      - media:/app/media
     depends_on:
       - postgres
     command: bash -c "sleep 3 && python ./manage.py migrate
       && python ./manage.py runserver 0.0.0.0:8000"
 
   postgres:
-    image: "postgres:10"
+    image: postgres:latest
     volumes:
       - pgdata:/var/lib/postgresql/data
 
 volumes:
      pgdata:
+     media:

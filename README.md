@@ -19,7 +19,8 @@
 - Install [Docker](https://www.docker.com/community-edition)
 - `git clone git@github.com:inoks/django-classified-demo.git`
 - `cd django-classified-demo/`
-- `docker-compose up`
+- `docker-compose up -d`
+- `docker-compose run web python ./manage.py populate_demo_data`
 - Open http://localhost:8000/ in your browser
 
 ## Customisation
