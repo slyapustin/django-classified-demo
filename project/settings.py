@@ -193,3 +193,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Populate initial DB structure for country
 CRAIGSLIST_COUNTRY = 'GB'
 DCF_CURRENCY = 'GBP'
+DCF_DISPLAY_EMPTY_GROUPS = True
