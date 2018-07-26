@@ -12,7 +12,7 @@ You can check demo project running here: http://classified.pzbz.ru
 - `cd django-classified-demo/app/`
 - `python3 -m venv .`
 - `source bin/activate`
-- `pip install -r requirements.txt`
+- `pip install -r requirements/default.txt`
 - `python3 ./manage.py migrate`
 - `python3 ./manage.py populate_demo_data`
 - `python3 ./manage.py runserver`

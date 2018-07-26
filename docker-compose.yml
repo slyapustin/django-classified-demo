@@ -11,6 +11,7 @@ services:
       - static:/app/static
     depends_on:
       - db
+      - memcached
     command: bash -c "sleep 3
       && python ./manage.py migrate
       && gunicorn wsgi:application --workers 2 --bind :8000"
@@ -33,6 +34,9 @@ services:
       - app:app
     depends_on:
       - app
+
+  memcached:
+    image: memcached:alpine
 
 volumes:
      pgdata:

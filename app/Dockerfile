@@ -2,12 +2,11 @@ FROM python:3.6.5
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /app
 WORKDIR /app
-ADD requirements.txt /app/
-RUN pip install -U pip
-RUN pip install -r requirements.txt
+ADD requirements/default.txt /app/
+ADD requirements/docker.txt /app/
 
-RUN pip install psycopg2-binary
-RUN pip install gunicorn
+RUN pip install -U pip
+RUN pip install -r docker.txt
 
 ADD . /app/
 
