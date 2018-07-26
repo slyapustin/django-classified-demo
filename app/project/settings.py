@@ -162,6 +162,10 @@ DCF_SITE_NAME = 'DEMO Classified'
 # https://python-social-auth.readthedocs.io/en/latest/backends/facebook.html
 SOCIAL_AUTH_FACEBOOK_KEY = ''
 SOCIAL_AUTH_FACEBOOK_SECRET = ''
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email'
+}
 
 SOCIAL_AUTH_EMAIL_FORM_HTML = 'demo/email_signup.html'
 SOCIAL_AUTH_EMAIL_VALIDATION_FUNCTION = 'demo.mail.send_validation'
@@ -172,7 +176,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_uid',
     'social_core.pipeline.social_auth.auth_allowed',
     'social_core.pipeline.social_auth.social_user',
-    'demo.pipelines.require_email',
     'social_core.pipeline.user.get_username',
     'social_core.pipeline.mail.mail_validation',
     'social_core.pipeline.user.create_user',
@@ -183,7 +186,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.debug.debug'
 )
 
-EMAIL_FROM = DCF_SITE_NAME
+EMAIL_FROM = 'demo@example.com'
 
 # Use your real email settings
 # https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_BACKEND
