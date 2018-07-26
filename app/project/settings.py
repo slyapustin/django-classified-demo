@@ -189,8 +189,5 @@ EMAIL_FROM = DCF_SITE_NAME
 # https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_BACKEND
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
-# Populate initial DB structure for country
-CRAIGSLIST_COUNTRY = 'GB'
 DCF_CURRENCY = 'GBP'
 DCF_DISPLAY_EMPTY_GROUPS = True

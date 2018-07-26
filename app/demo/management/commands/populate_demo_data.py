@@ -54,10 +54,11 @@ class Command(BaseCommand):
                 )
             )
 
-        self.stdout.write('Loading Areas')
+        country_code = 'GB'
+        self.stdout.write('Loading Areas for %s' % country_code)
         areas = json.load(open('demo/craigslist_data/Areas.json'))
         for area in areas:
-            if area.get('Country') == settings.CRAIGSLIST_COUNTRY:
+            if area.get('Country') == country_code:
                 Area.objects.get_or_create(
                     slug=area.get('Abbreviation'),
                     defaults=dict(
