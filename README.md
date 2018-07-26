@@ -2,10 +2,14 @@
 
 [Django-classified](https://github.com/inoks/django-classified) demo project with user authorization via Facebook or Email.
 
+## Demo web site
+
+You can check demo project running here: http://classified.pzbz.ru
+
 ## Running on local machine
 
 - `git clone git@github.com:inoks/django-classified-demo.git`
-- `cd django-classified-demo/`
+- `cd django-classified-demo/app/`
 - `python3 -m venv .`
 - `source bin/activate`
 - `pip install -r requirements.txt`
