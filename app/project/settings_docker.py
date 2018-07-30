@@ -38,3 +38,5 @@ CACHES = {
         'LOCATION': 'memcached:11211',
     }
 }
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
