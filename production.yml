@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  app:
+    volumes:
+      - media:/app/media
+      - static:/app/static
+    env_file:
+      - production.env
+    restart: always

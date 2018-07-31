@@ -27,6 +27,14 @@ You can check demo project running here: http://classified.pzbz.ru
 - `docker-compose run web python ./manage.py populate_demo_data`
 - Open http://localhost:8000/ in your browser
 
+
+## Production with Docker
+
+- You need to create [Docker machine](https://docs.docker.com/machine/examples/ocean/#step-3-use-machine-to-create-the-droplet).
+- Copy `docker.env` file to `production.env` and adjust your settings
+- Activate production Docker machine `eval "$(docker-machine env docker-sandbox)"`
+- Start your app in the Docker `docker-compose -f docker-compose.yml -f production.yml up -d`
+
 ## Customisation
 
  - Note: `populate_demo_data` management command will load initial data to populate app

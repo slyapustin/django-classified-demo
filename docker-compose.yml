@@ -1,20 +1,13 @@
-version: '2'
+version: '3.3'
 services:
   app:
     build: ./app
-    volumes:
-      - ./app/:/app/
-    volumes:
-      - media:/app/media
-      - static:/app/static
     depends_on:
       - db
       - memcached
     command: bash -c "sleep 3
       && python ./manage.py migrate
       && gunicorn wsgi:application --workers 2 --bind :8000"
-    env_file:
-      - docker.env
 
   db:
     image: postgres:latest
@@ -26,8 +19,9 @@ services:
     build: ./nginx/
     ports:
       - "127.0.0.1:8000:80"
-    volumes_from:
-      - app
+    volumes:
+      - media:/app/media
+      - static:/app/static
     links:
       - app:app
     depends_on:
