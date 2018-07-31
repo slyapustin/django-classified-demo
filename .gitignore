@@ -107,3 +107,7 @@ venv.bak/
 settings_local.py
 sqlite.db
 notes.txt
+
+production.env
+# Exclude local helper scripts
+_*.sh
