@@ -8,6 +8,9 @@ jobs:
     docker:
       - image: circleci/python:3.7.2
       - image: circleci/postgres:10.6
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: demo_classified
 
     working_directory: ~/repo
 
@@ -45,8 +48,8 @@ jobs:
             . venv/bin/activate
             python app/manage.py test -v 2
           environment:
-            DATABASE_URL: postgres://127.0.0.1:@localhost:5432/postgres
             DEBUG: true
+            DATABASE_URL: "postgres://root@localhost:5432/demo_classified"
             CACHE_URL: dummycache://
             SECRET_KEY: this-is-test-secret-key
 
