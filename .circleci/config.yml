@@ -52,7 +52,7 @@ jobs:
             python app/manage.py test -v 2
           environment:
             DEBUG: true
-            DATABASE_URL: "postgres://root@localhost:5432/demo_classified"
+            DATABASE_URL: postgres://root@localhost:5432/demo_classified
             CACHE_URL: dummycache://
             SECRET_KEY: this-is-test-secret-key
 
