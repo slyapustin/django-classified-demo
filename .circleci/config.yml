@@ -47,7 +47,7 @@ jobs:
           environment:
             DATABASE_URL: postgres://127.0.0.1:@localhost:5432/postgres
             DEBUG: true
-            CACHE_UR: dummycache://
+            CACHE_URL: dummycache://
             SECRET_KEY: this-is-test-secret-key
 
       - store_artifacts:
