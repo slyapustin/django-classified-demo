@@ -6,12 +6,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7.2
+      # This is primary image which will be used for the application
+      - image: circleci/python:3.7.3
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.6.12
+      # This is some extra images we may use in our application
+      - image: circleci/postgres:10.6
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: demo_classified
 
     working_directory: ~/repo
 
@@ -30,6 +32,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install --upgrade pip
             pip install -r app/requirements/default.txt
 
       - save_cache:
@@ -46,7 +49,12 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python app/manage.py test
+            python app/manage.py test -v 2
+          environment:
+            DEBUG: true
+            DATABASE_URL: postgres://root@localhost:5432/demo_classified
+            CACHE_URL: dummycache://
+            SECRET_KEY: this-is-test-secret-key
 
       - store_artifacts:
           path: test-reports

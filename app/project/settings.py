@@ -1,7 +1,14 @@
 # -*- coding:utf-8 -*-
 import os
 
-DEBUG = True
+import environ
+
+env = environ.Env(
+        DEBUG=(bool, False),
+    )
+
+DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -14,16 +21,11 @@ MANAGERS = ADMINS
 ALLOWED_HOSTS = ['*']
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'sqlite.db'),
-    },
+    'default': env.db(),
 }
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
+    'default': env.cache()
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -87,9 +89,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '__PUT_SUPER_SECRET_RANDOM_STRING_HERE__'
 
 MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',

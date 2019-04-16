@@ -1,17 +1,5 @@
 from project.settings import *
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db'
-    }
-}
-
-DEBUG = os.environ.get('DJANGO_DEBUG') == 'True'
-
 if os.environ.get('DJANGO_EMAIL_HOST'):
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = os.environ['DJANGO_EMAIL_HOST']
@@ -30,13 +18,3 @@ SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 # Fixed proxy SSL header
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# Using Docker memcached container for cache
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'memcached:11211',
-    }
-}
-
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
