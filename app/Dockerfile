@@ -1,4 +1,4 @@
-FROM python:3.6.6
+FROM python:3.7.3
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /app
 WORKDIR /app
@@ -9,5 +9,3 @@ RUN pip install -U pip
 RUN pip install -r docker.txt
 
 ADD . /app/
-
-RUN python ./manage.py collectstatic --noinput
