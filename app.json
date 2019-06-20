@@ -1,0 +1,6 @@
+{
+    "name": "Django Classied Demo App",
+    "description": "Django Classified Demo Application",
+    "repository": "https://github.com/inoks/django-classified-demo",
+    "keywords": ["django", "classified"]
+  }
