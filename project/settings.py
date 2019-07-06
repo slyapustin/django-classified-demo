@@ -5,6 +5,7 @@ import environ
 
 env = environ.Env(
         DEBUG=(bool, False),
+        CACHE_URL=(str,  'dbcache://')
     )
 
 DEBUG = env('DEBUG')
@@ -18,7 +19,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 DATABASES = {
     'default': env.db(),
