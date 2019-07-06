@@ -8,7 +8,7 @@ from django_classified.models import Area, Section, Group
 
 
 class Command(BaseCommand):
-    help = 'Create Demo Classified Admin'
+    help = 'Setup Django Classified application'
 
     def create_admin(self):
         username = 'admin'

@@ -1,11 +1,28 @@
 {
-    "name": "Django Classied Demo App",
-    "description": "Django Classified Demo Application",
-    "repository": "https://github.com/inoks/django-classified-demo",
-    "keywords": ["django", "classified"],
-    "buildpacks": [
-        {
-          "url": "heroku/python"
-        }
-      ]
-  }
+  "name": "Django Classified",
+  "description": "Django Classified Application",
+  "repository": "https://github.com/inoks/django-classified-demo",
+  "keywords": [
+    "django",
+    "classified"
+  ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "A secret key for a particular Django installation.",
+      "generator": "secret"
+    }
+  },
+  "scripts": {
+    "postdeploy": "python ./manage.py setup_project"
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ]
+}

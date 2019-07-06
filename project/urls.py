@@ -14,6 +14,3 @@ urlpatterns = [
     url('login/', auth_views.LoginView.as_view(template_name='demo/login.html'), name='login'),
     url('email-sent/', TemplateView.as_view(template_name='demo/email_sent.html'))
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

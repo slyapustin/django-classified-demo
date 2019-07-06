@@ -111,3 +111,5 @@ notes.txt
 production.env
 # Exclude local helper scripts
 _*.sh
+
+.vscode/
