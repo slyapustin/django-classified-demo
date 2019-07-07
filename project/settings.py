@@ -92,6 +92,7 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
 MIDDLEWARE = (
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -151,6 +152,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_classified',
     'social_django',
+    'storages',
 
     'demo',
 ]
@@ -198,3 +200,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DCF_CURRENCY = 'GBP'
 DCF_DISPLAY_EMPTY_GROUPS = True
+
+DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN']
+DROPBOX_ROOT_PATH = os.environ['DROPBOX_ROOT_PATH']
