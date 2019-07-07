@@ -113,3 +113,5 @@ production.env
 _*.sh
 
 .vscode/
+
+notes.txt
