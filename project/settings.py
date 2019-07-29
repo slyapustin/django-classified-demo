@@ -5,7 +5,7 @@ import environ
 
 env = environ.Env(
         DEBUG=(bool, False),
-        CACHE_URL=(str,  'dbcache://')
+        CACHE_URL=(str,  'locmemcache://')
     )
 
 DEBUG = env('DEBUG')
