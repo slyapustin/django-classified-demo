@@ -49,7 +49,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python app/manage.py test -v 2
+            python ./manage.py test -v 2
           environment:
             DEBUG: true
             DATABASE_URL: postgres://root@localhost:5432/demo_classified
