@@ -10,12 +10,6 @@
     "SECRET_KEY": {
       "description": "A secret key for a particular Django installation.",
       "generator": "secret"
-    },
-    "DROPBOX_ROOT_PATH": {
-      "description": "Allow to jail your storage to a defined directory at Dropbox"
-    },
-    "DROPBOX_OAUTH2_TOKEN": {
-      "description": "Your DropBox token, if you haven’t follow this: https://www.dropbox.com/developers/documentation/python#tutorial"
     }
   },
   "scripts": {
