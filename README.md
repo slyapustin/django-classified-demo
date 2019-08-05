@@ -11,5 +11,3 @@ You can check demo project running here: [django-classified.herokuapp.com](https
 
 ## Customization
  - Note: `python ./manage.py setup_project` command will load initial data to populate app Sections, Groups and Areas based on [craigslist.org](http://craigslist.org) website structure.
-
- - Use username `admin` and `password` admin to access [Django Classified Admin](http://localhost:8000/admin/).
