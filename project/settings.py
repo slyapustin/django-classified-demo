@@ -5,6 +5,7 @@ import environ
 
 env = environ.Env(
         DEBUG=(bool, False),
+        CACHE_URL=(str,  'locmemcache://')
     )
 
 DEBUG = env('DEBUG')
@@ -18,7 +19,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 
 DATABASES = {
     'default': env.db(),
@@ -90,7 +91,11 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 MIDDLEWARE = (
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -147,6 +152,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_classified',
     'social_django',
+    'storages',
 
     'demo',
 ]
@@ -194,3 +200,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DCF_CURRENCY = 'GBP'
 DCF_DISPLAY_EMPTY_GROUPS = True
+
+AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_QUERYSTRING_AUTH = False
+AWS_DEFAULT_ACL='public-read'

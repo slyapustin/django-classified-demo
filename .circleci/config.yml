@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # This is primary image which will be used for the application
-      - image: circleci/python:3.7.3
+      - image: circleci/python:3.7.4
 
       # This is some extra images we may use in our application
       - image: circleci/postgres:10.6
@@ -33,7 +33,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
-            pip install -r app/requirements/default.txt
+            pip install -r requirements.txt
 
       - save_cache:
           paths:
@@ -49,7 +49,8 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python app/manage.py test -v 2
+            python ./manage.py collectstatic --noinput
+            python ./manage.py test -v 2
           environment:
             DEBUG: true
             DATABASE_URL: postgres://root@localhost:5432/demo_classified
