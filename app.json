@@ -1,6 +1,6 @@
 {
   "name": "Django Classified",
-  "description": "Django Classified Application",
+  "description": "Django Classified Demo",
   "repository": "https://github.com/inoks/django-classified-demo",
   "keywords": [
     "django",
@@ -10,6 +10,12 @@
     "SECRET_KEY": {
       "description": "A secret key for a particular Django installation.",
       "generator": "secret"
+    },
+    "SOCIAL_AUTH_FACEBOOK_KEY": {
+      "description": "Check docs for more info on how to obtain keys here: https://python-social-auth.readthedocs.io/en/latest/backends/facebook.html"
+    },
+    "SOCIAL_AUTH_FACEBOOK_SECRET": {
+      "description": "Check docs for more info on how to obtain keys here: https://python-social-auth.readthedocs.io/en/latest/backends/facebook.html"
     }
   },
   "scripts": {
