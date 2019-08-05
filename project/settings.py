@@ -200,6 +200,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DCF_CURRENCY = 'GBP'
 DCF_DISPLAY_EMPTY_GROUPS = True
+GOOGLE_ANALYTICS_PROPERTY_ID = os.environ.get('GOOGLE_ANALYTICS_PROPERTY_ID')
 
 AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
