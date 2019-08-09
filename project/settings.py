@@ -193,7 +193,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.debug.debug'
 )
 
-DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_FROM', 'demo@example.com')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'demo@example.com')
 
 # Configure email Backend via EMAIL_URL
 vars().update(env.email_url())
