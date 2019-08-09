@@ -195,9 +195,8 @@ SOCIAL_AUTH_PIPELINE = (
 
 EMAIL_FROM = os.environ.get('EMAIL_FROM', 'demo@example.com')
 
-# Use your real email settings
-# https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_BACKEND
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Configure email Backend via EMAIL_URL
+vars().update(env.email_url())
 
 DCF_CURRENCY = 'GBP'
 DCF_DISPLAY_EMPTY_GROUPS = True
