@@ -5,7 +5,8 @@ import environ
 
 env = environ.Env(
         DEBUG=(bool, False),
-        CACHE_URL=(str,  'locmemcache://')
+        CACHE_URL=(str,  'locmemcache://'),
+        EMAIL_URL=(str, 'consolemail://')
     )
 
 DEBUG = env('DEBUG')
@@ -192,7 +193,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.debug.debug'
 )
 
-EMAIL_FROM = 'demo@example.com'
+EMAIL_FROM = os.environ.get('EMAIL_FROM', 'demo@example.com')
 
 # Use your real email settings
 # https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_BACKEND
