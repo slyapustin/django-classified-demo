@@ -15,7 +15,7 @@ SECRET_KEY = env('SECRET_KEY')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ADMINS = (
-    ('Admin', 'admin@example.com'),
+    ('Demo Classified Admin', os.environ.get('ADMIN_EMAIL', 'admin@example.com')),
 )
 
 MANAGERS = ADMINS
