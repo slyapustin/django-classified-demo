@@ -1,4 +1,4 @@
-boto3==1.9.210
+boto3==1.9.219
 django-classified==0.8.11
 django-environ==0.4.5
 django-storages==1.7.1
