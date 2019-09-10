@@ -1,7 +1,7 @@
 boto3==1.9.223
 django-classified==0.8.11
 django-environ==0.4.5
-django-storages==1.7.1
+django-storages==1.7.2
 django==2.2.5
 gunicorn==19.9.0
 psycopg2-binary==2.8.3
