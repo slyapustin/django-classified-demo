@@ -1,5 +1,5 @@
 """
-WSGI config for nationmaster4 project.
+WSGI config for django-classified project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
