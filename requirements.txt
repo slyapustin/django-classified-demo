@@ -2,7 +2,7 @@ boto3==1.9.234  # pyup: ignore
 django-classified==0.8.12
 django-environ==0.4.5
 django-storages==1.7.2
-django==2.2.6
+django==2.2.7
 gunicorn==19.9.0
 psycopg2-binary==2.8.3
 python-memcached==1.59
