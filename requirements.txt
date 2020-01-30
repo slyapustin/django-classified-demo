@@ -1,5 +1,5 @@
 boto3==1.9.234  # pyup: ignore
-django-classified==0.8.12
+django-classified==0.9
 django-environ==0.4.5
 django-storages==1.8
 django==2.2.8
