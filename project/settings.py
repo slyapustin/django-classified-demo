@@ -4,10 +4,10 @@ import os
 import environ
 
 env = environ.Env(
-        DEBUG=(bool, False),
-        CACHE_URL=(str,  'locmemcache://'),
-        EMAIL_URL=(str, 'consolemail://')
-    )
+    DEBUG=(bool, False),
+    CACHE_URL=(str, 'locmemcache://'),
+    EMAIL_URL=(str, 'consolemail://')
+)
 
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
@@ -107,9 +107,7 @@ MIDDLEWARE = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.email.EmailAuth',
     'social_core.backends.facebook.FacebookOAuth2',
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -172,11 +170,10 @@ SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-  'fields': 'id, name, email'
+    'fields': 'id, name, email'
 }
 
 SOCIAL_AUTH_EMAIL_FORM_HTML = 'demo/email_signup.html'
-SOCIAL_AUTH_EMAIL_VALIDATION_FUNCTION = 'demo.mail.send_validation'
 SOCIAL_AUTH_EMAIL_VALIDATION_URL = '/email-sent/'
 
 SOCIAL_AUTH_PIPELINE = (
@@ -208,4 +205,4 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL='public-read'
+AWS_DEFAULT_ACL = 'public-read'
