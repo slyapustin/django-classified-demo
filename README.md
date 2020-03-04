@@ -1,6 +1,6 @@
 # Django Classified Demo website #
 
-[Django-classified](https://github.com/inoks/django-classified) demo project with user authorization via Facebook or Email.
+[Django-classified](https://github.com/slyapustin/django-classified) demo project with user authorization via Facebook or Email.
 
 ## Demo web site
 You can check demo project running here: [django-classified.herokuapp.com](https://django-classified.herokuapp.com?utm_source=github).
