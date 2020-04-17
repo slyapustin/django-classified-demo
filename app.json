@@ -1,7 +1,7 @@
 {
   "name": "Django Classified",
   "description": "Django Classified Demo",
-  "repository": "https://github.com/inoks/django-classified-demo",
+  "repository": "https://github.com/slyapustin/django-classified-demo",
   "keywords": [
     "django",
     "classified"
