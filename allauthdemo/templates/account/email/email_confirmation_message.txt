@@ -1,0 +1,11 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Please confirm your e-mail address
+										
+This message is from {{ site_name }}.
+
+The user "{{ user_display }}", registering at {{ site_name }}, has given your e-mail address in order to confirm their account details {{ email_display }}.
+
+To confirm this information click the link below.
+
+{{ activate_url }}
+
+We may need to send you critical information about our service and it is important that we have an accurate e-mail address.{% endblocktrans %}{% endautoescape %}

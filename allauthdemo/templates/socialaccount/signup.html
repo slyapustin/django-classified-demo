@@ -1,0 +1,54 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n bootstrap4 %}
+
+{% block head_title %}{% trans "Register" %}{% endblock %}
+
+{% block body %}
+
+	{% block content %}
+	
+		{% block messages %}
+			{% if messages %}
+			<div>
+				<ul>
+				{% for message in messages %}
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						<strong>{{message}}</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+				{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+		  {% endblock %}
+	  
+		<h3>{% trans "Register" %}</h3>
+	
+		<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to log-in to
+		{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+		
+		<form class="form-horizontal" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+			{% csrf_token %}
+			{% bootstrap_form form layout='horizontal' %}
+			{% if redirect_field_value %}
+			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+			{% endif %}
+			  
+			<div class="form-group">
+				<div class=" col-sm-2 col-lg-2 ">
+				</div>
+				<div class=" col-sm-10 col-lg-10 ">
+					<div class="btn-toolbar">
+						<button  class="btn btn-outline-primary " type="submit">{% trans "Register" %}</button>
+					</div>
+				</div>
+			</div>
+			
+			</form>
+
+	{% endblock %}
+	
+{% endblock %}

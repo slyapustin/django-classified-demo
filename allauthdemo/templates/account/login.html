@@ -1,0 +1,96 @@
+
+
+{% extends "django_classified/_base.html" %}
+
+{% load i18n bootstrap4 %}
+
+{% block meta_og %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+
+{% endblock %}
+
+{% block title %}{% trans "Sign in" %}{% endblock title %}
+
+{% block body %}
+
+	{% block content %}
+	 
+	 {% block messages %}
+		{% if messages %}
+		<div>
+			<ul>
+			{% for message in messages %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<strong>{{message}}</strong>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+	  {% endblock %}
+	  
+
+	  
+	<h3>{% trans "Log-in" %}</h3>
+	
+	<p>{% blocktrans %}Log-in here if you have an account, or <a href="{{ signup_url }}">create a new account</a>.{% endblocktrans %}</p>				 
+	
+	<form class="form-horizontal" id="login_form" method="POST" action="{% url 'account_login' %}">
+	
+	  {% csrf_token %}
+	  	  
+	  {% bootstrap_form form layout='horizontal' %}
+	
+	  {% if redirect_field_value %}
+	  
+		<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+	  
+	  {% endif %}
+	  
+		<div class="form-group">
+			<div class=" col-sm-2 col-lg-2 ">
+			</div>
+			<div class=" col-sm-10 col-lg-10 ">
+				<div class="btn-toolbar">
+					<button  class="btn btn-outline-primary " type="submit">{% trans "Log-in" %}</button>
+					<a  class="btn btn-default" href="{% url 'account_reset_password' %}">{% trans "Forgot password?" %}</a>
+				</div>
+			</div>
+		</div>
+		
+	</form>
+	
+	<!--social account loads-->
+	
+		{% load account socialaccount %}
+		
+		
+		{% get_providers as socialaccount_providers %}
+		
+		{% if socialaccount_providers %} 
+				
+			<h4>Other log-in options</h4>
+			<div class="btn-toolbar">
+			
+			{% comment %}
+				fa-[name] is case sensitive, ie use 'lower' fa-{{provider.name|lower}} 
+			{% endcomment %}
+			
+			{% for provider in socialaccount_providers %}
+				<a title="{{provider.name}}" class="btn btn-default mr-2"
+				 href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fa fa-{{provider.name|lower}}"></i> {{provider.name}}</a>
+			{% endfor %}
+			
+			</div>
+			
+		{% endif %}
+	<!--social account ends-->
+
+	{% endblock %}
+
+{% endblock %}
+

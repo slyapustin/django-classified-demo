@@ -1,0 +1,31 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n %}
+
+{% block head_links %} 
+
+{% endblock %}
+
+{% block title %}{% trans "Verify your e-mail address" %}{% endblock title %}
+
+{% block body %}
+
+	{% block content %}
+		<h3>{% trans "Verify your e-mail address" %}</h3>
+	
+		{% blocktrans %}
+		<p>We have sent an e-mail to you in order to verify your e-mail address. Follow the link provided in that e-mail to finalise the signup process.</p>
+		
+		<p>If you do not receive the e-mail within a few minutes you can have the verification e-mail re-sent:</p>
+		
+		<ul>
+			<li>Go to the log-in page.</li>
+			<li>Enter the user name (not the e-mail address) and password you used to create your account.</li>
+			<li>Click the &ldquo;Log-in&rdquo; button.</li>
+			<li>This will trigger the system to send another verification e-mail.</li>
+		</ul>
+		{% endblocktrans %}
+	
+	{% endblock %}
+
+{% endblock %}

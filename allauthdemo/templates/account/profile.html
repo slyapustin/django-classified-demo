@@ -1,0 +1,50 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n bootstrap4 %}
+{% load .views import profile_view
+
+{% block title %}{% trans "User profile" %}{% endblock title %}
+
+{% block body %}
+
+	{% block content %}
+	
+		{% block messages %}
+			{% if messages %}
+			<div>
+				<ul>
+				{% for message in messages %}
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						<strong>{{message}}</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+				{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+		{% endblock %}
+	  
+		<h3>{% trans "User profile" %}</h3>
+		
+		<p>{% blocktrans %}Please find below links to edit your user profile.{% endblocktrans %}</p>				 
+		
+		<p><a href="/accounts/email/">E-mail</a>: {% blocktrans %}Edit, add, remove and verify e-mail addresses.{% endblocktrans %}</p>
+		
+		<p><a href="/accounts/password/change/">Password</a>: {% blocktrans %}Change password.{% endblocktrans %}</p>
+		
+		<p><a href="/accounts/telephone/">Telephone</a>: {% blocktrans %}update your telephone number.{% endblocktrans %}</p>
+		
+		<p><a href="/user/">Items</a>: {% blocktrans %}view your listed items.{% endblocktrans %}</p>
+		
+		<!--
+		<p><a href="/user/set-area/">Area</a>: {% blocktrans %}set your area.{% endblocktrans %}</p>
+		-->
+		
+		<p><a href="/accounts/social/connections/">Social media accounts</a>: {% blocktrans %}social media accounts you are linked to on this site.{% endblocktrans %}</p>
+
+
+	{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n %}
+
+{% block head_links %} 
+
+{% endblock %}
+
+{% block title %}{% trans "Registration closed" %}{% endblock title %}
+
+{% block body %}
+
+	{% block content %}
+	<h1>{% trans "Registration closed" %}</h1>
+	
+	<p>{% trans "We are sorry, but registration is currently closed." %}</p>
+	{% endblock %}
+	
+{% endblock %}

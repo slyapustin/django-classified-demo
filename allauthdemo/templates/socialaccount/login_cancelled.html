@@ -1,0 +1,19 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n bootstrap4 %}
+
+{% block head_title %}{% trans "Log-in cancelled" %}{% endblock %}
+
+{% block body %}
+
+	{% block content %}
+	
+	<h3>{% trans "Log-in cancelled" %}</h3>
+	
+	{% url 'account_login' as login_url %}
+	
+	<p>{% blocktrans %}You decided to cancel logging-in to our site using one of your existing social accounts. If this was a mistake, please return to the to <a href="{{login_url}}">log-in page</a>.{% endblocktrans %}</p>
+	
+	{% endblock %}
+
+{% endblock %}

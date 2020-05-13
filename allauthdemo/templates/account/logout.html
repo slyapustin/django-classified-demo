@@ -1,0 +1,36 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n %}
+
+{% block head_links %} 
+
+{% endblock %}
+
+{% block title %}{% trans "Sign out" %}{% endblock title %}
+
+{% block body %}
+
+	{% block content %}
+	
+	
+	<h3>{% trans "Sign out" %}</h3>
+	
+	<p>{% trans 'Are you sure you want to sign out?' %}</p>
+	
+	<form class="form-horizontal" id="logout_form" method="post" action="{% url 'account_logout' %}">
+	  {% csrf_token %}
+	
+	  {% if redirect_field_value %}
+	
+		<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+	
+	  {% endif %}
+	  
+	  <button  class="btn btn-outline-success" type="submit">{% trans 'Sign out' %}</button>
+	  <a class="btn btn-outline-danger" id="custom_logout_no" href="/accounts/profile/">{% trans 'No' %}</a>
+	</form>
+	
+	
+	{% endblock %}
+
+{% endblock %}
