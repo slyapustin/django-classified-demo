@@ -1,0 +1,40 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n bootstrap4 account %}
+
+{% block head_links %} 
+
+{% endblock %}
+
+{% block title %}{% trans "Confirm e-mail address" %}{% endblock title %}
+
+{% block body %}
+
+	{% block content %}
+	
+	<h3>{% trans "Confirm e-mail address" %}</h3>
+	
+		{% if confirmation %}
+		
+			{% user_display confirmation.email_address.user as user_display %}
+		
+			<p class="verification_sent_info" >{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+		
+			<form class="form-horizontal" method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+			{% csrf_token %}
+				<button class="btn btn-primary" type="submit">{% trans 'Confirm' %}</button>
+			</form>
+		
+		{% else %}
+		
+			{% url 'account_email' as email_url %}
+		
+			<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please {% endblocktrans %}<a href="{{ email_url }}">{% blocktrans %}issue a new e-mail confirmation request{% endblocktrans %}</a>.</p>
+			
+			<p>Return to <a href="{{ login_url }}">sign in</a> page.</p>
+			
+		{% endif %}
+		
+	{% endblock %}
+
+{% endblock %}

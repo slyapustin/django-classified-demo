@@ -1,0 +1,17 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n bootstrap4 %}
+
+{% block head_title %}{% trans "Social network log-in failure" %}{% endblock %}
+
+{% block body %}
+
+	{% block content %}
+		<h3>{% trans "Social network log-in failure" %}</h3>
+		
+		<p>{% trans "An error occurred while attempting to log-in via your social network account." %}</p>
+		
+	{% endblock %}
+
+{% endblock %}
+

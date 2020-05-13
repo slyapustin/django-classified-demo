@@ -1,0 +1,10 @@
+
+{% load account %}
+
+{% user_display user as user_display %}
+
+<h3>Already logged in!</h3>
+<p>You are already logged in as {{ user_display }}.</p>
+<a class="btn btn-default" id="custom_logout_no" href="/accounts/profile/">Back to profile</a>
+
+

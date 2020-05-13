@@ -1,0 +1,17 @@
+{% extends "django_classified/_base.html" %}
+
+{% load i18n %}
+
+{% block head_links %}{% endblock %}
+
+{% block title %}{% trans "Account inactive" %}{% endblock title %}
+
+{% block body %}
+
+	{% block content %}
+	<h3>{% trans "Account inactive" %}</h3>
+	
+	<p>{% trans "This account is inactive." %}</p>
+	{% endblock %}
+
+{% endblock %}
