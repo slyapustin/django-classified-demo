@@ -9,6 +9,8 @@ env = environ.Env(
     EMAIL_URL=(str, 'consolemail://')
 )
 
+environ.Env.read_env()
+
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
