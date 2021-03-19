@@ -18,6 +18,53 @@ Create `.env ` file with your local settings (use `.env.example` as an example).
 - Start local development server `python ./manage.py runserver`
 - Visit http://127.0.0.1:8000/
 
+To populate database with sample data for Types, Categories and Areas, and create the superuser (if not already created):
+- `python ./manage.py setup_project`
+
+
+## Storage
+The project is set up by default to run with local storage, with wihtenoise. To change this activate the remote storage in the settings file, and comment out/remove the local storage options.
+
+
+## AllAuth
+django-allauth is used as the log-in/verification system in this demo. For documentation see:
+
+https://django-allauth.readthedocs.io/
+
+For social media log-in systems largely require a developer account with the provider. The exception to this is OpenID. Social media log-ins require setup in the admin section of the demo site. 
+
+
+## Settings
+
+### Image storage
+
+This note assumes that submitted changes have taken place in django_classified, if they have not, then this setting will have no effect.
+
+DCF_IMAGE_STORAGE can override the default uploade image path, which is `images`.
+
+For example:
+
+DCF_IMAGE_STORAGE = 'images/items/%Y/%m/%d'
+
+In this case the date string formats will be set to the date of the upload, so that the result would look like:
+
+'images/items/2021/03/18/image.png'
+
+This can be extended, for example, to incorporate seconds:
+
+DCF_IMAGE_STORAGE = 'images/items/%Y/%m/%d/%H/%M/%S'
+
+### Email
+
+Default EMIAL_URL:
+
+'smtp://[user]:[password]@[host.domain.tld]:[portnumber]'
+
+Edit to look something like
+
+'smtp://myname:mypass@host.domain.tld:25'
+
+
 ## Development notes
 This demo is a work in progress and is intended to help you get started with django-classified.
 

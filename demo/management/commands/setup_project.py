@@ -34,7 +34,7 @@ class Command(BaseCommand):
     def populate_craigslist_data(self):
         # Clone structure of Craigslist
         self.stdout.write('Loading Sections')
-        sections = json.load(open('allauthdemo/craigslist_data/Types.json'))
+        sections = json.load(open('demo/craigslist_data/Types.json'))
         sections_dict = dict()
         for section in sections:
             obj, _ = Section.objects.get_or_create(
@@ -44,7 +44,7 @@ class Command(BaseCommand):
             sections_dict[section['Type']] = obj
 
         self.stdout.write('Loading Groups')
-        categories = json.load(open('allauthdemo/craigslist_data/Categories.json'))
+        categories = json.load(open('demo/craigslist_data/Categories.json'))
         for category in categories:
             Group.objects.get_or_create(
                 slug=category['Abbreviation'],
@@ -56,7 +56,7 @@ class Command(BaseCommand):
 
         country_code = 'GB'
         self.stdout.write('Loading Areas for %s' % country_code)
-        areas = json.load(open('allauthdemo/craigslist_data/Areas.json'))
+        areas = json.load(open('demo/craigslist_data/Areas.json'))
         for area in areas:
             if area.get('Country') == country_code:
                 Area.objects.get_or_create(

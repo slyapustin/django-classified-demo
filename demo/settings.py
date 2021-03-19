@@ -10,7 +10,6 @@ env = environ.Env(
 )
 
 DEBUG = env('DEBUG')
-development=True
 SECRET_KEY = ''
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -110,7 +109,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     
-    os.path.join(BASE_DIR, 'allauthdemo/static'),
+    os.path.join(BASE_DIR, 'demo/static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -120,15 +119,17 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+#For remote file storage
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 MIDDLEWARE = (
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -162,7 +163,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-ROOT_URLCONF = 'allauthdemo.urls'
+ROOT_URLCONF = 'demo.urls'
 
 TEMPLATES = [
     {
@@ -203,7 +204,7 @@ INSTALLED_APPS = [
 
     'fontawesome_5', # only used on log-in page for social network icons
     
-    'allauthdemo',
+    'demo',
     
     'allauth',
     'allauth.account',
@@ -233,6 +234,17 @@ EMAIL_URL=env('EMAIL_URL')
 
 DCF_CURRENCY = 'GBP'
 DCF_DISPLAY_EMPTY_GROUPS = True
+
+
+# DCF_IMAGE_STORAGE
+# Assumes that submitted changes have been incorporated into 'Image' model 
+# and 'django_classified/settings.py.
+#
+# default is 'images'
+# date string formats are interpreted as at image upload, and can
+# be extended eg: 'images/items/%Y/%m/%d/%H/%M/%S'
+DCF_IMAGE_STORAGE = 'images/items/%Y/%m/%d'
+
 #GOOGLE_ANALYTICS_PROPERTY_ID = os.environ.get('GOOGLE_ANALYTICS_PROPERTY_ID')
 
 #AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
@@ -255,18 +267,18 @@ ACCOUNT_PRESERVE_USERNAME_CASING = False # reduces the delays in iexact lookups
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_UNIQUE_EMAIL=True
 ACCOUNT_USERNAME_MIN_LENGTH = 5
-ACCOUNT_USERNAME_MAX_LENGTH = 20 # custom setting, via 'allauthdemo.adapter.CustomProcessAdapter'
+ACCOUNT_USERNAME_MAX_LENGTH = 20 # custom setting, via 'demo.adapter.CustomProcessAdapter'
 ACCOUNT_USERNAME_REQUIRED =True
 ACCOUNT_USERNAME_VALIDATORS = None
-ACCOUNT_PASSWORD_MAX_LENGTH = 20 # custom setting, via 'allauthdemo.adapter.CustomProcessAdapter'
+ACCOUNT_PASSWORD_MAX_LENGTH = 20 # custom setting, via 'demo.adapter.CustomProcessAdapter'
 
 ##############################
 
 #Account adapters
-ACCOUNT_ADAPTER = 'allauthdemo.adapter.CustomProcessAdapter'
+ACCOUNT_ADAPTER = 'demo.adapter.CustomProcessAdapter'
 
 #Account Signup
-ACCOUNT_FORMS = {'signup': 'allauthdemo.forms.SignupForm',}
+ACCOUNT_FORMS = {'signup': 'demo.forms.SignupForm',}
 
 # Social network settings
 # see: https://django-allauth.readthedocs.io/en/latest/providers.html

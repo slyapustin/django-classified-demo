@@ -1,8 +1,5 @@
 from allauth.account.forms import SignupForm
 from django import forms
-#from django.utils.translation import ugettext as _
-#import django_classified.models
-#from django_classified.models import Profile as profile
 
 class SignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First Name')
