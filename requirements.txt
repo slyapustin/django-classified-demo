@@ -4,7 +4,7 @@ django-environ==0.4.5
 django-storages==1.11
 django==3.0.9
 gunicorn==20.0.4
-psycopg2-binary==2.8.6
+psycopg2-binary==2.9.3
 python-memcached==1.59
 social-auth-app-django==3.1.0
 whitenoise==5.2.0
