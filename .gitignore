@@ -106,6 +106,7 @@ venv.bak/
 # local settings and DB
 settings_local.py
 sqlite.db
+db.sqlite
 notes.txt
 
 production.env
@@ -113,5 +114,7 @@ production.env
 _*.sh
 
 .vscode/
+.idea/
 
 notes.txt
+.DS_Store
