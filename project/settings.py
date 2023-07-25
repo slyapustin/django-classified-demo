@@ -195,6 +195,8 @@ SOCIAL_AUTH_PIPELINE = (
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'demo@example.com')
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Configure email Backend via EMAIL_URL
 vars().update(env.email_url())
 
