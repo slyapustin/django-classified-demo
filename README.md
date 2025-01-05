@@ -6,7 +6,7 @@
 
 Click the button below to deploy the Django Classified Demo app to DigitalOcean
 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/slyapustin/django-classified-demo/tree/main&refcode=08ce1ee690de)
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/slyapustin/django-classified-demo&refcode=08ce1ee690de)
 
 ## Customization
 
