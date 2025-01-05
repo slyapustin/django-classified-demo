@@ -24,7 +24,7 @@ spec:
           value: '${db.DATABASE_URL}'
   databases:
     - name: db
-      engine: pg # Uses PostgreSQL
+      engine: PG # Uses PostgreSQL
       version: 17
       cluster_name: django-classified-db
       size: db-s-1vcpu-1gb
