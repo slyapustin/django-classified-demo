@@ -115,6 +115,7 @@ _*.sh
 
 .vscode/
 .idea/
+static/
 
 notes.txt
 .DS_Store

@@ -6,7 +6,9 @@ import environ
 env = environ.Env(
     DEBUG=(bool, False),
     CACHE_URL=(str, 'locmemcache://'),
-    EMAIL_URL=(str, 'consolemail://')
+    EMAIL_URL=(str, 'consolemail://'),
+    SECRET_KEY=(str, 'secret'),
+    DATABASE_URL=(str, 'sqlite:///db.sqlite'),
 )
 
 environ.Env.read_env()
