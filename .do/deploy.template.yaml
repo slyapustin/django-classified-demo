@@ -1,7 +1,6 @@
 
 spec:
   name: django-classified-demo
-  region: nyc
   services:
     - name: web
       github:
@@ -14,9 +13,11 @@ spec:
         python ./manage.py setup_project
       environment_slug: python
       instance_size_slug: basic-xxs
-      envs:
-        - key: SECRET_KEY
-          value: "change-me"
-          type: SECRET
-        - key: ALLOWED_HOSTS
-          value: ".ondigitalocean.app"
+  envs:
+    - key: SECRET_KEY
+      value: "change-me"
+      type: SECRET
+      scope: RUN_AND_BUILD_TIME
+    - key: ALLOWED_HOSTS
+      value: ".ondigitalocean.app"
+      scope: RUN_AND_BUILD_TIME
