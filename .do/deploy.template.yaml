@@ -16,9 +16,8 @@ spec:
       http_port: 8080
       envs:
         - key: SECRET_KEY
-          scope: RUN_AND_BUILD
-          generator: |
-            python -c "import random; print(''.join(random.choices('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)', k=50)))"
+          value: "change-me"
+          type: SECRET
         - key: DATABASE_URL
           scope: RUN_AND_BUILD
           value: '${db.DATABASE_URL}'
