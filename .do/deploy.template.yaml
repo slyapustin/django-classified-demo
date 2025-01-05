@@ -1,6 +1,7 @@
 
 spec:
   name: django-classified-demo
+  region: nyc
   services:
     - name: web
       github:
