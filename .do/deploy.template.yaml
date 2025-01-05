@@ -1,6 +1,6 @@
 
 spec:
-  name: Django Classified Demo
+  name: django-classified-demo
   services:
     - name: web
       github:
