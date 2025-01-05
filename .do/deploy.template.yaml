@@ -19,7 +19,7 @@ spec:
           value: "change-me"
           type: SECRET
         - key: DATABASE_URL
-          scope: RUN_AND_BUILD
+          scope: RUN_TIME
           value: '${db.DATABASE_URL}'
   databases:
     - name: db
