@@ -1,0 +1,28 @@
+name: Django Classified Demo
+services:
+  - name: web
+    github:
+      repo: slyapustin/django-classified-demo
+      branch: main
+    build_command: pip install -r requirements.txt
+    run_command: |
+      python manage.py migrate --no-input &&
+      python ./manage.py collectstatic --no-input &&
+      python manage.py runserver 0.0.0.0:8080
+    environment_slug: python
+    instance_size_slug: basic-xxs
+    http_port: 8080
+    envs:
+      - key: SECRET_KEY
+        scope: RUN_AND_BUILD
+        generator: |
+          python -c "import random; print(''.join(random.choices('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)', k=50)))"
+      - key: DATABASE_URL
+        scope: RUN_AND_BUILD
+        value: '${db.DATABASE_URL}'
+databases:
+  - engine: pg # Uses PostgreSQL
+    version: 17
+    cluster_name: django-classified-db
+    size: db-s-1vcpu-1gb
+    region: nyc3 # e.g., nyc3, sfo3
