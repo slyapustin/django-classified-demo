@@ -3,9 +3,9 @@ spec:
   name: django-classified-demo
   services:
     - name: web
-      github:
-        repo: slyapustin/django-classified-demo
-        branch: master
+      git:
+          branch: master
+          repo_clone_url: https://github.com/slyapustin/django-classified-demo.git
       build_command: |
         pip install -r requirements.txt &&
         python manage.py migrate --no-input &&
