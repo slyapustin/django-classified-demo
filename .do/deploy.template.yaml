@@ -25,6 +25,6 @@ spec:
   databases:
     - name: db
       engine: PG # Uses PostgreSQL
-      version: 17
+      version: "17"
       cluster_name: django-classified-db
       size: db-s-1vcpu-1gb
