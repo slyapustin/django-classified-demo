@@ -16,7 +16,6 @@ spec:
   envs:
     - key: SECRET_KEY
       value: "change-me"
-      type: SECRET
       scope: RUN_AND_BUILD_TIME
     - key: ALLOWED_HOSTS
       value: ".ondigitalocean.app"
