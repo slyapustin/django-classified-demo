@@ -3,7 +3,7 @@ services:
   - name: web
     github:
       repo: slyapustin/django-classified-demo
-      branch: main
+      branch: ${SOURCE_BRANCH}
     build_command: pip install -r requirements.txt
     run_command: |
       python manage.py migrate --no-input &&
