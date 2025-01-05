@@ -19,9 +19,3 @@ spec:
         - key: SECRET_KEY
           value: "change-me"
           type: SECRET
-        - key: DATABASE_URL
-          scope: RUN_TIME
-          value: '${db.DATABASE_URL}'
-  databases:
-    - name: db
-      engine: PG # Uses PostgreSQL
