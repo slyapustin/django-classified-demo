@@ -20,3 +20,6 @@ spec:
     - key: ALLOWED_HOSTS
       value: ".ondigitalocean.app"
       scope: RUN_AND_BUILD_TIME
+    - key: DEBUG
+      value: "True"
+      scope: RUN_AND_BUILD_TIME

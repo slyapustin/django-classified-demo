@@ -8,6 +8,8 @@ Click the button below to deploy the Django Classified Demo app to DigitalOcean:
 
 [![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/slyapustin/django-classified-demo/tree/do-deployment&refcode=08ce1ee690de)
 
+Use username `admin` and password `admin` to login to the admin panel.
+
 ## Customization
 
 - Note: `python ./manage.py setup_project` command will load initial data to populate app Sections, Groups and Areas based on [craigslist.org](http://craigslist.org) website structure.
