@@ -6,16 +6,19 @@ spec:
       github:
         repo: slyapustin/django-classified-demo
         branch: do-deployment
-      build_command: pip install -r requirements.txt
-      run_command: |
+      build_command: |
+        pip install -r requirements.txt &&
         python manage.py migrate --no-input &&
         python ./manage.py collectstatic --no-input &&
-        python ./manage.py setup_project &&
-        python manage.py runserver 0.0.0.0:8080
+        python ./manage.py setup_project
       environment_slug: python
       instance_size_slug: basic-xxs
-      http_port: 8080
+      volumes:
+        - path: /data
+          size: 1Gi
       envs:
         - key: SECRET_KEY
           value: "change-me"
           type: SECRET
+        - key: ALLOWED_HOSTS
+          value: ".ondigitalocean.app"
