@@ -23,7 +23,8 @@ spec:
           scope: RUN_AND_BUILD
           value: '${db.DATABASE_URL}'
   databases:
-    - engine: pg # Uses PostgreSQL
+    - name: db
+      engine: pg # Uses PostgreSQL
       version: 17
       cluster_name: django-classified-db
       size: db-s-1vcpu-1gb
