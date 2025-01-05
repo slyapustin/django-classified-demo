@@ -13,9 +13,6 @@ spec:
         python ./manage.py setup_project
       environment_slug: python
       instance_size_slug: basic-xxs
-      volumes:
-        - path: /data
-          size: 1Gi
       envs:
         - key: SECRET_KEY
           value: "change-me"
