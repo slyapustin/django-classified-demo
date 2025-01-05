@@ -1,0 +1,25 @@
+
+spec:
+  name: django-classified-demo
+  services:
+    - name: web
+      github:
+        repo: slyapustin/django-classified-demo
+        branch: master
+      build_command: |
+        pip install -r requirements.txt &&
+        python manage.py migrate --no-input &&
+        python ./manage.py collectstatic --no-input &&
+        python ./manage.py setup_project
+      environment_slug: python
+      instance_size_slug: basic-xxs
+  envs:
+    - key: SECRET_KEY
+      value: "change-me"
+      scope: RUN_AND_BUILD_TIME
+    - key: ALLOWED_HOSTS
+      value: ".ondigitalocean.app"
+      scope: RUN_AND_BUILD_TIME
+    - key: DEBUG
+      value: "True"
+      scope: RUN_AND_BUILD_TIME

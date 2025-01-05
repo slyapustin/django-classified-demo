@@ -3,6 +3,8 @@ import os
 
 import environ
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 env = environ.Env(
     DEBUG=(bool, False),
     CACHE_URL=(str, 'locmemcache://'),
@@ -11,12 +13,11 @@ env = environ.Env(
     DATABASE_URL=(str, 'sqlite:///db.sqlite'),
 )
 
-environ.Env.read_env()
+env.read_env(str(os.path.join(BASE_DIR, ".env")))
 
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ADMINS = (
     ('Demo Classified Admin', os.environ.get('ADMIN_EMAIL', 'admin@example.com')),
@@ -66,7 +67,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: 'http://media.lawrence.com/media/', 'http://example.com/media/'
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -90,15 +91,14 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-# List of finder classes that know how to find static files in
-# various locations.
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 MIDDLEWARE = (
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -156,7 +156,6 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_classified',
     'social_django',
-    'storages',
 
     'demo',
 ]
@@ -205,10 +204,3 @@ vars().update(env.email_url())
 DCF_CURRENCY = 'GBP'
 DCF_DISPLAY_EMPTY_GROUPS = True
 GOOGLE_ANALYTICS_PROPERTY_ID = os.environ.get('GOOGLE_ANALYTICS_PROPERTY_ID')
-
-AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = 'public-read'

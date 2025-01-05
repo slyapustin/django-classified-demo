@@ -1,6 +1,5 @@
 import json
 
-from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 from django.db import IntegrityError
@@ -67,5 +66,8 @@ class Command(BaseCommand):
                 )
 
     def handle(self, *args, **options):
+        if User.objects.exists():
+            self.stdout.write('Non-empty database detected. Skipping demo data loading.')
+            return
         self.create_admin()
         self.populate_craigslist_data()
