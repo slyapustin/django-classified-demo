@@ -10,6 +10,7 @@ spec:
       run_command: |
         python manage.py migrate --no-input &&
         python ./manage.py collectstatic --no-input &&
+        python ./manage.py setup_project &&
         python manage.py runserver 0.0.0.0:8080
       environment_slug: python
       instance_size_slug: basic-xxs
